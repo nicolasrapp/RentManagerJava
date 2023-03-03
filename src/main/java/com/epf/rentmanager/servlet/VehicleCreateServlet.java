@@ -1,6 +1,8 @@
 package com.epf.rentmanager.servlet;
 
+import com.epf.rentmanager.exception.DaoException;
 import com.epf.rentmanager.exception.ServiceException;
+import com.epf.rentmanager.model.Vehicle;
 import com.epf.rentmanager.service.ClientService;
 import com.epf.rentmanager.service.ReservationService;
 import com.epf.rentmanager.service.VehicleService;
@@ -13,24 +15,35 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/vehicles")
+@WebServlet("/vehicles/create")
+public class VehicleCreateServlet extends HttpServlet {
 
-public class VehicleListServlet extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
     VehicleService vehicleService;
+
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        this.getServletContext().getRequestDispatcher("/WEB-INF/views/vehicles/create.jsp").forward(request, response);
+    }
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 
-        try {
+        String constructeur = request.getParameter("manufacturer");
+        int seats = Integer.parseInt(request.getParameter("seats"));
 
-            request.setAttribute("vehicles", this.vehicleService.getInstance().findAll());
+        try{
+            vehicleService.getInstance().create(new Vehicle(0,constructeur, seats));
+
 
         } catch (ServiceException e) {
             e.printStackTrace();
+        } catch (DaoException e) {
+            throw new RuntimeException(e);
         }
-        this.getServletContext().getRequestDispatcher("/WEB-INF/views/vehicles/list.jsp").forward(request, response);
 
+
+        response.sendRedirect("/rentmanager/vehicles");
     }
 
 }
+

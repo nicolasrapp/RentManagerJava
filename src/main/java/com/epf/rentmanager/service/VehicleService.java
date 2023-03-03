@@ -27,10 +27,10 @@ public class VehicleService {
 	}
 	
 	
-	public long create(Vehicle vehicle) throws ServiceException {
-		// TODO: créer un véhicule
+	public long create(Vehicle vehicle) throws ServiceException, DaoException {
+		long id = vehicleDao.create(vehicle);
 
-		return 0;
+		return id;
 	}
 
 	public Vehicle findById(long id) throws ServiceException {
