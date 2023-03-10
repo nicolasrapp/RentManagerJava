@@ -18,6 +18,23 @@ public class Client {
 
     }
 
+    public Client (String nom, String prenom, String email){
+        this.id = 0;
+        this.nom = nom;
+        this.prenom = prenom;
+        this.email = email;
+        this.naissance = LocalDate.now();
+
+    }
+
+    public Client (long id, String nom, String prenom, String email){
+        this.id = id;
+        this.nom = nom;
+        this.prenom = prenom;
+        this.email = email;
+        this.naissance = LocalDate.now();
+
+    }
     public Client () {
         this (0,"prenom", "nom", "email", LocalDate.parse("31/10/2000"));
     }

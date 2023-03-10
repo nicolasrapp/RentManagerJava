@@ -21,7 +21,6 @@ public class VehicleListServlet extends HttpServlet {
     VehicleService vehicleService;
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-
         try {
 
             request.setAttribute("vehicles", this.vehicleService.getInstance().findAll());

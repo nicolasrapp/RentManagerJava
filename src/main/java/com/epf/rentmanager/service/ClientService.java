@@ -27,7 +27,6 @@ public class ClientService {
 	
 	
 	public long create(Client client) throws ServiceException, DaoException {
-		// TODO: créer un client
 
 		long id = clientDao.create(client);
 

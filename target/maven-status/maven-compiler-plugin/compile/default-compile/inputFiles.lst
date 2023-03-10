@@ -1,3 +1,4 @@
+C:\Users\nicol\OneDrive - Fondation EPF\4A\Langage Java\Projet\rentmanager\src\main\java\com\epf\rentmanager\servlet\UserCreateServlet.java
 C:\Users\nicol\OneDrive - Fondation EPF\4A\Langage Java\Projet\rentmanager\src\main\java\com\epf\rentmanager\ui\Test.java
 C:\Users\nicol\OneDrive - Fondation EPF\4A\Langage Java\Projet\rentmanager\src\main\java\com\epf\rentmanager\dao\ReservationDao.java
 C:\Users\nicol\OneDrive - Fondation EPF\4A\Langage Java\Projet\rentmanager\src\main\java\com\epf\rentmanager\exception\DaoException.java
@@ -11,6 +12,7 @@ C:\Users\nicol\OneDrive - Fondation EPF\4A\Langage Java\Projet\rentmanager\src\m
 C:\Users\nicol\OneDrive - Fondation EPF\4A\Langage Java\Projet\rentmanager\src\main\java\com\epf\rentmanager\servlet\UserListServlet.java
 C:\Users\nicol\OneDrive - Fondation EPF\4A\Langage Java\Projet\rentmanager\src\main\java\com\epf\rentmanager\persistence\ConnectionManager.java
 C:\Users\nicol\OneDrive - Fondation EPF\4A\Langage Java\Projet\rentmanager\src\main\java\com\epf\rentmanager\model\Vehicle.java
+C:\Users\nicol\OneDrive - Fondation EPF\4A\Langage Java\Projet\rentmanager\src\main\java\com\epf\rentmanager\servlet\VehicleCreateServlet.java
 C:\Users\nicol\OneDrive - Fondation EPF\4A\Langage Java\Projet\rentmanager\src\main\java\com\epf\rentmanager\dao\ClientDao.java
 C:\Users\nicol\OneDrive - Fondation EPF\4A\Langage Java\Projet\rentmanager\src\main\java\com\epf\rentmanager\model\Reservation.java
 C:\Users\nicol\OneDrive - Fondation EPF\4A\Langage Java\Projet\rentmanager\src\main\java\com\epf\rentmanager\service\VehicleService.java

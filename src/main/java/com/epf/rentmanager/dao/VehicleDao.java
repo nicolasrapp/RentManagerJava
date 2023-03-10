@@ -43,7 +43,6 @@ public class VehicleDao {
 				id = resultSet.getInt(1);
 			}
 
-
 			ps.close();
 			connection.close();
 			return id;

@@ -31,17 +31,14 @@
                                     <th>Nom</th>
                                     <th>Prenom</th>
                                     <th>Email</th>
-                                    <th>Naissance</th>
                                     <th>Action</th>
                                 </tr>
                                 <c:forEach items="${clients}" var="clients">
                                    <td>${clients.id}.</td>
-                                   <td>${vehicle.nom}</td>
-                                   <td>${vehicle.prenom}</td>
-                                   <td>${vehicle.email}</td>
-                                   <td>${vehicle.naissance}</td>
+                                   <td>${clients.nom}</td>
+                                   <td>${clients.prenom}</td>
+                                   <td>${clients.email}</td>
 
-                                  <!--<td>John Doe</td>-->
 
                                       <td>
                                    <a class="btn btn-primary disabled" href="car-detail.html">
