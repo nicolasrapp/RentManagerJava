@@ -9,6 +9,8 @@ public class Reservation {
     private long vehicleid;
     private LocalDate debut;
     private LocalDate fin;
+    private Client client;
+    private Vehicle vehicule;
 
     public Reservation  (long id, long clientid, long vehicleid, LocalDate debut, LocalDate fin) {
         this.id = id;
@@ -16,6 +18,23 @@ public class Reservation {
         this.vehicleid = vehicleid;
         this.debut = debut;
         this.fin = fin;
+    }
+
+    public void setClient(Client client) {
+        this.client = client;
+    }
+
+    public Vehicle getVehicule() {
+        return vehicule;
+    }
+
+    public void setVehicule(Vehicle vehicule) {
+        this.vehicule = vehicule;
+    }
+
+
+    public Client getClient() {
+        return client;
     }
 
     public long getId() {
