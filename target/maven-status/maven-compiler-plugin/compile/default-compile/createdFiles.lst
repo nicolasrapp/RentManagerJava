@@ -1,6 +1,7 @@
 com\epf\rentmanager\servlet\UserListServlet.class
 com\epf\rentmanager\servlet\ReservationListServlet.class
 com\epf\rentmanager\service\ReservationService.class
+com\epf\rentmanager\servlet\ReservationCreateServlet.class
 com\epf\rentmanager\servlet\VehicleCreateServlet.class
 com\epf\rentmanager\servlet\VehicleListServlet.class
 com\epf\rentmanager\servlet\UserCreateServlet.class

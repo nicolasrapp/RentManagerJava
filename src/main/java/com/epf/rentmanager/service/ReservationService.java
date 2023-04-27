@@ -25,26 +25,32 @@ public class ReservationService {
     }
 
 
+    public long delete(Reservation reservation) throws ServiceException {
+        try {
+            return this.reservationDao.delete(reservation);
+        } catch (DaoException e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
+
     public long create(Reservation reservation) throws ServiceException {
-        // TODO: créer un reservation
+        try {
+            return this.reservationDao.create(reservation);
+        } catch (DaoException e) {
+            e.printStackTrace();
+        }
         return 0;
     }
 
 
     public List<Reservation> findAll() throws ServiceException {
-        List <Reservation> reservations = new ArrayList<Reservation>();
         try {
-            reservations = reservationDao.findAll();
-            for (int i=0; i<reservations.size(); i++){
-                Client client = clientService.findById(reservations.get(i).getClientid());
-                reservations.get(i).setClient(client);
-                Vehicle vehicule = vehicleService.findById(reservations.get(i).getVehicleid());
-                reservations.get(i).setVehicule(vehicule);
-            }
-            return reservations;
+            return this.reservationDao.findAll();
         } catch (DaoException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
         }
+        return null;
     }
 
     public Reservation findById(long id) throws ServiceException {
