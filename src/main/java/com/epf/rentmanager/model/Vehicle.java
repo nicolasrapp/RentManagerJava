@@ -14,6 +14,13 @@ public class Vehicle {
         this.nbplace = nbplace;
     }
 
+    public Vehicle(int id, String constructeur, String modele, int nbplace) {
+        this.id = id;
+        this.constructeur = constructeur;
+        this.modele = modele;
+        this.nbplace = nbplace;
+    }
+
     public Vehicle (long id){
         this.id =id;
     }

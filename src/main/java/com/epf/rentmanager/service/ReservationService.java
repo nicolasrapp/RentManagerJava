@@ -69,4 +69,13 @@ public class ReservationService {
         return 0;
     }
 
+    public ArrayList<Reservation> findResaByClientId(long id) throws ServiceException {
+        try {
+            return this.reservationDao.findResaByClientId(id);
+        } catch (DaoException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
 }
