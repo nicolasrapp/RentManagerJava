@@ -27,6 +27,10 @@ public class Client {
 
     }
 
+    public Client (long id){
+        this.id = id;
+    }
+
     public Client (long id, String nom, String prenom, String email){
         this.id = id;
         this.nom = nom;

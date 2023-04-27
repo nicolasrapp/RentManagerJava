@@ -47,7 +47,16 @@ public class VehicleDao {
 		}	}
 
 	public long delete(Vehicle vehicle) throws DaoException {
-		return 0;
+		try {
+			Connection conn = ConnectionManager.getConnection();
+			PreparedStatement stmt = conn.prepareStatement(DELETE_VEHICLE_QUERY,
+					Statement.RETURN_GENERATED_KEYS);
+			stmt.setLong(1, vehicle.getId());
+			long key = ((PreparedStatement) stmt).executeUpdate();
+			return key;
+		} catch (SQLException e) {
+			throw new DaoException();
+		}
 	}
 
 	public Vehicle findById(long id) throws DaoException {

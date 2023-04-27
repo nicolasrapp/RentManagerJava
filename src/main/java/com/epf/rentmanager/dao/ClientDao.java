@@ -50,9 +50,19 @@ public class ClientDao {
 		}
 
 	}
-	
+
+
 	public long delete(Client client) throws DaoException {
-		return 0;
+		try {
+			Connection conn = ConnectionManager.getConnection();
+			PreparedStatement stmt = conn.prepareStatement(DELETE_CLIENT_QUERY, Statement.RETURN_GENERATED_KEYS);
+			stmt.setLong(1, client.getId());
+			long key = stmt.executeUpdate();
+			conn.close();
+			return key;
+		} catch (SQLException e) {
+			throw new DaoException();
+		}
 	}
 
 	public Client findById(long id) throws DaoException {

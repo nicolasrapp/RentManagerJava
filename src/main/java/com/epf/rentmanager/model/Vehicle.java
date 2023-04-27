@@ -14,6 +14,10 @@ public class Vehicle {
         this.nbplace = nbplace;
     }
 
+    public Vehicle (long id){
+        this.id =id;
+    }
+
     @Override
     public String toString() {
         return "Vehicle" +

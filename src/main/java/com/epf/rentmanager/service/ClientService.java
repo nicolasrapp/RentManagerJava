@@ -18,9 +18,16 @@ public class ClientService {
 	private ClientService(ClientDao clientDao) {
 		this.clientDao = clientDao;
 	}
-	
 
-	
+
+	public long delete(Client client) throws ServiceException {
+		try {
+			return this.clientDao.delete(client);
+		} catch (DaoException e) {
+			e.printStackTrace();
+		}
+		return 0;
+	}
 	
 	public long create(Client client) throws ServiceException, DaoException {
 

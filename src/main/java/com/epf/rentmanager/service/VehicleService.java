@@ -28,6 +28,15 @@ public class VehicleService {
 		return id;
 	}
 
+	public long delete(Vehicle vehicle) throws ServiceException {
+		try {
+			return this.vehicleDao.delete(vehicle);
+		} catch (DaoException e) {
+			e.printStackTrace();
+		}
+		return 0;
+	}
+
 	public Vehicle findById(long id) throws ServiceException {
 		// TODO: récupérer un véhicule par son id
 
