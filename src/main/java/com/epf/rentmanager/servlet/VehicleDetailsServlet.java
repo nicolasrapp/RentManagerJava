@@ -1,8 +1,6 @@
-package com.epf.rentmanager.ui.servlets;
+package com.epf.rentmanager.servlet;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,7 +9,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.epf.rentmanager.exception.ServiceException;
-import com.epf.rentmanager.model.Reservation;
 import com.epf.rentmanager.service.ClientService;
 import com.epf.rentmanager.service.ReservationService;
 import com.epf.rentmanager.service.VehicleService;
@@ -19,8 +16,9 @@ import com.epf.rentmanager.service.VehicleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.context.support.SpringBeanAutowiringSupport;
 
-@WebServlet(name = "ReservationListServlet", urlPatterns = "/rents")
-public class ReservationListServlet extends HttpServlet {
+@WebServlet(name = "VehicleDetailsServlet", value = "/cars/details")
+public class VehicleDetailsServlet extends HttpServlet {
+
     @Autowired
     private ClientService clientService;
 
@@ -30,26 +28,27 @@ public class ReservationListServlet extends HttpServlet {
     @Autowired
     private VehicleService vehicleService;
 
-
     @Override
     public void init() throws ServletException {
         super.init();
         SpringBeanAutowiringSupport.processInjectionBasedOnCurrentContext(this);
-        System.out.println("My servlet has been initialized");
     }
 
-
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
         try {
-            List<Reservation> resas = reservationService.findAll();
-            request.setAttribute("resas", resas);
+            request.setAttribute("resas",
+                    reservationService.findResaByVehicleId(Integer.parseInt(request.getParameter("id"))));
+            request.setAttribute("vehicule", Integer.parseInt(request.getParameter("id")));
             request.setAttribute("users", clientService.findAll());
             request.setAttribute("cars", vehicleService.findAll());
-        } catch (ServiceException e) {
+        } catch (NumberFormatException | ServiceException e) {
             e.printStackTrace();
         }
-        request.getRequestDispatcher("./WEB-INF/views/rents/list.jsp").forward(request, response);
+
+        request.getServletContext().getRequestDispatcher("/WEB-INF/views/vehicles/details.jsp").forward(request,
+                response);
     }
 
     @Override

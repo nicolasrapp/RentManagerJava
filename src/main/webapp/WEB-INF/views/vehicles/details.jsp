@@ -15,9 +15,12 @@
                             <!-- Content Header (Page header) -->
                             <section class="content-header">
                                 <h1>
-                                    Reservations
-                                    <a class="btn btn-primary"
-                                        href="${pageContext.request.contextPath}/rents/create">Ajouter</a>
+                                    Reservations pour le vehicule :
+                                    <c:forEach items="${cars}" var="car">
+                                        <c:if test="${vehicule eq car.id}">
+                                            <td>${car.constructeur} ${car.modele}</td>
+                                        </c:if>
+                                    </c:forEach>
                                 </h1>
                             </section>
 
@@ -52,16 +55,15 @@
                                                             <td>${resa.debut}</td>
                                                             <td>${resa.fin}</td>
                                                             <td>
-                                                                <a class="btn btn-primary disabled"
-                                                                    href="${pageContext.request.contextPath}/rents/detail?id=${resa.id}">
-                                                                    <i class="fa fa-play"></i>
-                                                                </a>
-                                                                <!--<a class="btn btn-success" href="${pageContext.request.contextPath}/rents/update?id=${resa.id}">
-                                            <i class="fa fa-edit"></i>
+                                                                <!--<a class="btn btn-primary" href="${pageContext.request.contextPath}/rents/detail?id=${resa.id}">
+                                            <i class="fa fa-play"></i>
                                         </a>
+                                        <a class="btn btn-success" href="${pageContext.request.contextPath}/rents/update?id=${resa.id}">
+                                            <i class="fa fa-edit"></i>
+                                        </a>-->
                                                                 <a class="btn btn-danger"
                                                                     href="${pageContext.request.contextPath}/rents/delete?id=${resa.id}">
-                                                                    <i class="fa fa-trash"></i>-->
+                                                                    <i class="fa fa-trash"></i>
                                                                 </a>
                                                             </td>
                                                         </tr>

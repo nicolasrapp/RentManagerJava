@@ -53,7 +53,7 @@ public class ReservationService {
         return null;
     }
 
-    public Reservation findById(long id) throws ServiceException {
+    public Reservation findById(int id) throws ServiceException {
         try {
             return reservationDao.findById(id);
         } catch (DaoException e) {
@@ -72,6 +72,15 @@ public class ReservationService {
     public ArrayList<Reservation> findResaByClientId(long id) throws ServiceException {
         try {
             return this.reservationDao.findResaByClientId(id);
+        } catch (DaoException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public ArrayList<Reservation> findResaByVehicleId(long id) throws ServiceException {
+        try {
+            return this.reservationDao.findResaByVehicleId(id);
         } catch (DaoException e) {
             e.printStackTrace();
         }

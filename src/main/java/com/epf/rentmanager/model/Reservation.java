@@ -3,86 +3,94 @@ package com.epf.rentmanager.model;
 import java.time.LocalDate;
 
 public class Reservation {
-
-    private long id;
-    private long clientid;
-    private long vehicleid;
+    private int id;
+    private int client_id;
+    private int vehicle_id;
     private LocalDate debut;
     private LocalDate fin;
-    private Client client;
-    private Vehicle vehicule;
 
-    public Reservation  (long id, long clientid, long vehicleid, LocalDate debut, LocalDate fin) {
+    public Reservation(int id, int client_id, int vehicle_id, LocalDate debut, LocalDate fin) {
         this.id = id;
-        this.clientid = clientid;
-        this.vehicleid = vehicleid;
+        this.client_id = client_id;
+        this.vehicle_id = vehicle_id;
         this.debut = debut;
         this.fin = fin;
     }
+
     public Reservation(int id) {
         this.id = id;
     }
     public Reservation(int client_id, int vehicle_id, LocalDate debut, LocalDate fin) {
-        this.clientid = client_id;
-        this.vehicleid = vehicle_id;
+        this.client_id = client_id;
+        this.vehicle_id = vehicle_id;
         this.debut = debut;
         this.fin = fin;
     }
-
-    public void setClient(Client client) {
-        this.client = client;
-    }
-
-    public Vehicle getVehicule() {
-        return vehicule;
-    }
-
-    public void setVehicule(Vehicle vehicule) {
-        this.vehicule = vehicule;
+    public int getId() {
+        return this.id;
     }
 
 
-    public Client getClient() {
-        return client;
+    public int getClient_id() {
+        return this.client_id;
     }
 
-    public long getId() {
-        return id;
+    public void setClient_id(int client_id) {
+        this.client_id = client_id;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public int getVehicle_id() {
+        return this.vehicle_id;
     }
 
-    public long getClientid() {
-        return clientid;
-    }
-
-    public long getVehicleid() {
-        return vehicleid;
+    public void setVehicle_id(int vehicle_id) {
+        this.vehicle_id = vehicle_id;
     }
 
     public LocalDate getDebut() {
-        return debut;
-    }
-
-    public LocalDate getFin() {
-        return fin;
-    }
-
-    public void setClientid(int clientid) {
-        this.clientid = clientid;
+        return this.debut;
     }
 
     public void setDebut(LocalDate debut) {
         this.debut = debut;
     }
 
+    public LocalDate getFin() {
+        return this.fin;
+    }
+
     public void setFin(LocalDate fin) {
         this.fin = fin;
     }
 
-    public void setVehicleid(int vehicleid) {
-        this.vehicleid = vehicleid;
+    public Reservation client_id(int client_id) {
+        setClient_id(client_id);
+        return this;
+    }
+
+    public Reservation vehicle_id(int vehicle_id) {
+        setVehicle_id(vehicle_id);
+        return this;
+    }
+
+    public Reservation debut(LocalDate debut) {
+        setDebut(debut);
+        return this;
+    }
+
+    public Reservation fin(LocalDate fin) {
+        setFin(fin);
+        return this;
+    }
+
+    @Override
+    public String toString() {
+        return "{" +
+                " id='" + getId() + "'" +
+                ", client_id='" + getClient_id() + "'" +
+                ", vehicle_id='" + getVehicle_id() + "'" +
+                ", debut='" + getDebut() + "'" +
+                ", fin='" + getFin() + "'" +
+                "}";
     }
 }

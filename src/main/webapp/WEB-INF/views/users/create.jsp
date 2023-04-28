@@ -25,34 +25,40 @@
                     <!-- Horizontal Form -->
                     <div class="box">
                         <!-- form start -->
-                        <form class="form-horizontal" method="post">
+                        <form class="form-horizontal" method="post" action="${pageContext.request.contextPath}/users/create">
                             <div class="box-body">
                                 <div class="form-group">
                                     <label for="last_name" class="col-sm-2 control-label">Nom</label>
 
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="last_name" name="last_name" placeholder="Nom">
+                                        <input type="text" class="form-control" id="last_name" minlength="3" name="last_name" placeholder="Nom" required>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="first_name" class="col-sm-2 control-label">Prenom</label>
 
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="first_name" name="first_name" placeholder="Prenom">
+                                        <input type="text" class="form-control" id="first_name" minlength="3" name="first_name" placeholder="Prenom" required>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="email" class="col-sm-2 control-label">Email</label>
 
                                     <div class="col-sm-10">
-                                        <input type="email" class="form-control" id="email" name="email" placeholder="Email">
+                                        <input type="email" class="form-control" id="email" name="email" placeholder="Email" required>
                                     </div>
                                 </div>
+                                <div class="form-group">
+                                    <label for="birthdate" class="col-sm-2 control-label">Date de naissance</label>
 
+                                    <div class="col-sm-10">
+                                        <input type="date" class="form-control" id="birthdate" name="birthdate" placeholder="Naissance" required onchange="verifyAge()">
+                                    </div>
+                                </div>
                             </div>
                             <!-- /.box-body -->
                             <div class="box-footer">
-                                <button type="submit" class="btn btn-info pull-right">Ajouter</button>
+                                <button type="submit" class="btn btn-info pull-right" id="addbtn">Ajouter</button>
                             </div>
                             <!-- /.box-footer -->
                         </form>
@@ -70,5 +76,35 @@
 <!-- ./wrapper -->
 
 <%@ include file="/WEB-INF/views/common/js_imports.jsp" %>
+<script>
+    function verifyAge(){
+        var Bdate = document.getElementById('birthdate').value;
+        var Bday = +new Date(Bdate);
+        if(((Date.now() - Bday) / (31557600000)) > 18){
+            console.log('ok');
+            document.getElementById('addbtn').disabled = false;
+        } else{
+            console.log('nok');
+            document.getElementById('addbtn').disabled = true;
+            alert('Il faut avoir plus de 18ans...')
+        }
+    }
+
+    const clientsMailsList = [
+                            <c:forEach var="user" items="${users}">
+                                '${user.email}',
+                            </c:forEach>
+                            ];
+    $('#email').on('change',()=>{
+        let result = clientsMailsList.find((element)=> element==$('#email').val());
+        console.log(result)
+        if(result===undefined){
+            document.getElementById('addbtn').disabled = false;
+        } else { //une adresse mail existe
+            document.getElementById('addbtn').disabled = true;
+            alert('Cette adresse mail existe deja ...');
+        }
+    });
+</script>
 </body>
 </html>
